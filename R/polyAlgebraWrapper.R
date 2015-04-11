@@ -1,4 +1,6 @@
+NULL
 
+#' @export
 pAlg = function(a){
   if (is.character(a)) {
     ret = data.frame(.M = 1)
@@ -13,18 +15,20 @@ pAlg = function(a){
   }
   finish.pAlg(ret)
 }
-#' @export
-scalar = function(v,a){
-  if ("pAlg" %in% class(a)) { a = as.factor(attr(a,"var")) }
-  if (is.factor(a)) {
-    ret = matrix(0, 1, nlevels(a)+1)
-    ret = data.frame(ret)
-    names(ret) = c(".M", levels(a))
-    ret$.M = v;
-    attr(ret,"var") = levels(a)
-  } else {stop("a have to be a factor in scalar()");}
-  finish.pAlg(ret)
-}
+
+# #' @export
+# scalar = function(v,a){
+#   if ("pAlg" %in% class(a)) { a = as.factor(attr(a,"var")) }
+#   if (is.factor(a)) {
+#     ret = matrix(0, 1, nlevels(a)+1)
+#     ret = data.frame(ret)
+#     names(ret) = c(".M", levels(a))
+#     ret$.M = v;
+#     attr(ret,"var") = levels(a)
+#   } else {stop("a have to be a factor in scalar()");}
+#   finish.pAlg(ret)
+# }
+
 #' @export
 PV = function(x,...,sep="") {
   if (is.character(x)) {
@@ -242,3 +246,46 @@ is.zero.gvector = function(x) gapply(x, is.zero, simplify=TRUE)
 #   }
 #   aggregate(obj_)
 # }
+
+
+
+#################################################################3
+## export/print functions
+#' @export
+ToC = function (x, ...)
+  UseMethod("ToC")
+#' @export
+ToC.pAlg = function(p,float=TRUE, minimal=1e-10)
+{
+  attr(p,'var')$toC()
+}
+
+#' @export
+C = function(x,y,...,eq=" = ",sep) {
+  x = ToC(x,...)
+  if (missing(y)) {
+    if (missing(sep)) sep = ""
+    cat(x,sep=sep);
+  } else {
+    if (missing(sep)) sep = ";\n"
+    y = ToC(y,...)
+    cat(paste0(x,eq,y,sep),sep="")
+  }
+}
+#' @export
+is.int = function(x,min=1e-6) {
+  abs(x - round(x)) < min
+}
+##' @export
+#divisible = function(x,y,min=1e-6) {
+#  M.w = outer(x, y, "/")
+#  M.h = outer(!is.int(x),is.int(y),"|")
+#  is.int(M.w) & M.h
+#}
+
+#' @export
+ToC.gvector = function(x,...) gapply(x, ToC, ..., simplify=TRUE)
+#' @export
+ToC.numeric = function(x) {as.character(x)}
+
+

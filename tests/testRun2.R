@@ -1,6 +1,6 @@
 library("Rcpp")
 library("gvector")
-
+options(stringsAsFactors=FALSE)
 Sys.setenv("PKG_CXXFLAGS"=paste("-I", getwd(),'/src/symboliccpp', sep=""))
 
 sourceCpp("src/SymbolModule.cpp")
@@ -16,6 +16,7 @@ AddDensity = function(name, dx=0, dy=0, dz=0, comment="", field=name, adjoint=F,
   if (missing(name)) stop("Have to supply name in AddDensity!")
   if (missing(group)) group = name
   comment = ifelse(comment == "", name, comment);
+
   dd = data.frame(
     name=name,
     field=field,
@@ -44,4 +45,6 @@ AddDensity( name="g[8]", dx= 1, dy=-1, group="g")
 U = as.matrix(Density[Density$group=="g",c("dx","dy")])
 rho = PV('rho')
 u=PV(c('u.x','u.y'))
-print(MRT_feq(U,rho,u*rho))
+g = PV(Density$name[Density$group=="g"])
+
+C(g, MRT_feq(U,rho,u*rho))

@@ -45,6 +45,8 @@ class sSymbol {
     };
     
     Symbolic val;
+    int test;
+    
   
 };
 

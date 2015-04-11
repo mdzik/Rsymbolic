@@ -1,4 +1,4 @@
-library(polyAlgebra)
+#library(polyAlgebra)
 
 gcd <- function(a,b) ifelse (b==0, a, gcd(b, a %% b))
 library(numbers)

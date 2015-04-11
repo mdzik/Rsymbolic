@@ -11,6 +11,7 @@ sC <- function(x) {x$toC()}
 
 sC.gvector = function(x,...) gapply(x, sC, ..., simplify=TRUE)
 
+
 # from polyAlgebra package by Lukasz Laniewski
 spAlg <- function(x) {
   if (is.character(x)) {
@@ -44,4 +45,3 @@ v0 = sPV(c('c','d'))
 sC(sum(v0))
 
 gapply(v0/c(a,b), sC, simplify=T)
-

@@ -370,10 +370,15 @@ Multinomial<T>::toarray(void) const
   case univariate:   if(i==u.end()) v.push_back("0");
                      while(i!=u.end())
                      {
-                      if(i->first!=one(T()) || i->second==0)
-                       o << "(" << i->first << ")";
-                      if(i->second>0) o << variable;
-                      if(i->second>1) o << "^" << i->second;
+//                      if(i->first!=one(T()) || i->second==0)
+//                      o << "(" << i->first << ")";
+//                      if(i->second>0) o << variable;
+//                      if(i->second>1) o << "^" << i->second;
+
+                      if(i->first!=one(T()) || i->second==0) o << "pow(" << i->first ;
+                      if(i->second>0) o << "pow(" << variable ;
+                      if(i->second>1) o << "," << i->second << ")";
+
                       v.push_back(o.str());
                       o.str(""); i++;
                      }
@@ -381,8 +386,11 @@ Multinomial<T>::toarray(void) const
   case multivariate: if(j==m.end()) v.push_back("0");
                      while(j!=m.end())
                      {
-                      if(j->second>0) o << variable;
-                      if(j->second>1) o << "^" << j->second;
+//                      if(j->second>0) o << variable;
+//                      if(j->second>1) o << "^" << j->second;
+                      if(j->second>0) o << "pow( " << variable;
+                      if(j->second>1) o << "," << j->second << ")";
+                      
                       if(j->first!=one(T()) || j->second==0)
                       {
                        vector<string> v1 = j->first.toarray();

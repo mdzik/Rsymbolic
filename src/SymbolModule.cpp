@@ -16,9 +16,10 @@ RCPP_MODULE(class_sSymbol) {
     .constructor<double>()
     .constructor<int>()    
   //  .constructor<Symbolic>()
-   // .field_readonly("val", &sSymbol::val)
+    .field_readonly("test", &sSymbol::test)
 
     .method("toC", &sSymbol::toC)
+    .method("attrs", &sSymbol::toC)
     ;
 }
 
@@ -56,5 +57,9 @@ sSymbol sSymboloperator_divide(const sSymbol& x, const sSymbol& y) {
 // [[Rcpp::export]]
 sSymbol sSymboloperator_power(const sSymbol& x, const sSymbol& y) {
   return x.val ^ y.val;
+}
+// [[Rcpp::export]]
+bool sSymboloperator_equal(sSymbol& x, sSymbol& y) {
+  return x.val == y.val;
 }
 
