@@ -49,14 +49,11 @@ $ make test
 > gapply(v0/c(a,b), sC, simplify=T)
 [1] "c*(1./(a))" "d*(1./(b))"
 
-> (a^b / a)$toC() 
+> (a^b/a)$toC() 
 [1] "pow(a,(b-1))"
 
 > ((a^b)/b)$toC()
 [1] "pow(a,b)*(1./(b))"
-
-> ((a^b)/a)$toC()
-[1] "a*a+pow(b,(3))"
 
 > (a^2+b^3)$toC()
 [1] "a*a+pow(b,(3))"
