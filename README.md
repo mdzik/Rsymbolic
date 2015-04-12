@@ -4,7 +4,7 @@ R clone/port of C/C++ implemented symbolic algebra. Replacement for polyAlgebra
 #References
 
  * polyAlgebra: https://github.com/llaniewski/polyAlgebra
- * Symbolicc++: http://issc.uj.ac.za/symbolic/symbolic.html
+ * SymbolicC++: http://issc.uj.ac.za/symbolic/symbolic.html
 
 #Install and run
 
