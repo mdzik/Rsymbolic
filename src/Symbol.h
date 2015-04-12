@@ -40,6 +40,8 @@ class sSymbol {
     
     std::string toC(){
       std::stringstream v;
+      v << std::scientific;
+      v.precision(16);
       v << val;
       return v.str();
     };

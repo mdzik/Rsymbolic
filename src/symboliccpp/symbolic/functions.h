@@ -522,22 +522,41 @@ void Power::print(ostream &o) const
              || parameters.back().type() == typeid(Derivative);
   parens1 = !parens1;
   parens2 = !parens2;
-/**  if(parens1) o << "(";
+/**
+  if(parens1) o << "(";
   parameters.front().print(o);
   if(parens1) o << ")";
-  o << "^";
+  
+  o << "^akuku";
+  
   if(parens2) o << "(";
   parameters.back().print(o);
   if(parens2) o << ")";
-**/  
-  if(parens1) o << " pow(";
-  parameters.front().print(o);
-  if(parens1) o << ",";
-//  o << "^";
-//  if(parens2) o << "";
-  parameters.back().print(o);
-  if(parens2) o << ")";
+**/
+    if (parameters.back() == 2.) {
+      parameters.front().print(o);
+      o << "*";
+      parameters.front().print(o);
+    } else if (parameters.back() == 1.) {
+      parameters.front().print(o);
+    } else if (parameters.back() == -1.) {
+      o << "(1./(";
+      parameters.front().print(o);
+      o << "))";
+    } else {
+      o << "pow(";
+      if(parens1) o << "(";
+      parameters.front().print(o);
+      if(parens1) o << ")";
   
+      o << ",";
+  
+      if(parens2) o << "(";
+      parameters.back().print(o);
+      if(parens2) o << ")";
+
+      o << ")";
+  }  
 }
 
 Simplified Power::simplify() const

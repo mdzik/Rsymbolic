@@ -584,10 +584,14 @@ ostream &Polynomial<T>::output1(ostream &o) const
  o << ((i->first >= zero(T())) ? "" : "-");
  while(i != terms.end())
  {
-  if(i->first != one(T()) || i->second == zero(T()))
-   o << ((i->first >= zero(T())) ? i->first : -(i->first));
-  if(i->second > zero(T())) o << variable;
-  if(i->second > one(T())) o << "^" << i->second;
+ 
+  if(i->first != one(T()) || i->second == zero(T())) o << ((i->first >= zero(T())) ? i->first : -(i->first));
+ // if(i->second > zero(T())) o << variable;
+ // if(i->second > one(T())) o << "^akuku" << i->second;
+  if(i->second>0 && i->second>1) o << "pow(" << variable << ", " << i->second << ")";
+  if(j->second>0 && i->second <= 1) o << variable;
+ 
+
   if(++i != terms.end()) o << ((i->first >= zero(T())) ? "+" : "-");
  }
  return o;
@@ -601,10 +605,13 @@ ostream &Polynomial<T>::output2(ostream &o) const
  if(i == terms.end()) return o << zero(T());
  while(i != terms.end())
  {
-  if(i->first != one(T()) || i->second == 0)
-   o << "(" << i->first << ")";
-  if(i->second > 0) o << variable;
-  if(i->second > 1) o << "^" << i->second;
+  
+  if(i->first != one(T()) || i->second == 0) o << "(" << i->first << ")";
+  //if(i->second > 0) o << variable;
+  //if(i->second > 1) o << "^akuku" << i->second;
+  if(i->second>0 && i->second>1) o << "pow(" << variable << ", " << i->second << ")";
+  if(j->second>0 && i->second <= 1) o << variable;
+    
   if(++i != terms.end()) o << "+";
  }
  return o;
