@@ -1,4 +1,4 @@
-# Rsymbolic
+# symAlgebra
 R clone/port of C/C++ implemented symbolic algebra. Replacement for polyAlgebra
 
 #References
@@ -16,8 +16,8 @@ For test runs, gvector (https://github.com/llaniewski/gvector) is needed.
 Only test run is avalible, no package yet.
 
 ```bash
-$ git clone git@github.com:mdzik/Rsymbolic.git
-$ cd Rsymbolic
+$ git clone git@github.com:mdzik/symAlgebra.git
+$ cd symAlgebra
 $ make test
 ```
 
