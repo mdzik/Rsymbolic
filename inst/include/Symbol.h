@@ -11,10 +11,11 @@ class sSymbol {
     template <typename T> sSymbol(T val_);
     ~sSymbol();
     std::string toC();
-    
-    Symbolic * pval;
+    //Symbolic * pval;
     Symbolic & val();
     const Symbolic & val() const;
+    operator SEXP() const;
+    Rcpp::XPtr< Symbolic > pval;
 };
 
 

@@ -8,25 +8,25 @@
 
 using namespace Rcpp;
 
-// sS
-sSymbol sS(Rcpp::String v);
-static SEXP symAlgebra_sS_try(SEXP vSEXP) {
+// sAlg_fromString
+sSymbol sAlg_fromString(Rcpp::String v);
+static SEXP symAlgebra_sAlg_fromString_try(SEXP vSEXP) {
 BEGIN_RCPP
     SEXP __sexp_result;
     {
         Rcpp::traits::input_parameter< Rcpp::String >::type v(vSEXP );
-        sSymbol __result = sS(v);
+        sSymbol __result = sAlg_fromString(v);
         PROTECT(__sexp_result = Rcpp::wrap(__result));
     }
     UNPROTECT(1);
     return __sexp_result;
 END_RCPP_RETURN_ERROR
 }
-RcppExport SEXP symAlgebra_sS(SEXP vSEXP) {
+RcppExport SEXP symAlgebra_sAlg_fromString(SEXP vSEXP) {
     SEXP __result;
     {
         Rcpp::RNGScope __rngScope;
-        __result = PROTECT(symAlgebra_sS_try(vSEXP));
+        __result = PROTECT(symAlgebra_sAlg_fromString_try(vSEXP));
     }
     Rboolean __isInterrupt = Rf_inherits(__result, "interrupted-error");
     if (__isInterrupt) {
@@ -42,25 +42,25 @@ RcppExport SEXP symAlgebra_sS(SEXP vSEXP) {
     UNPROTECT(1);
     return __result;
 }
-// sN
-sSymbol sN(double v);
-static SEXP symAlgebra_sN_try(SEXP vSEXP) {
+// sAlg_fromDouble
+sSymbol sAlg_fromDouble(double v);
+static SEXP symAlgebra_sAlg_fromDouble_try(SEXP vSEXP) {
 BEGIN_RCPP
     SEXP __sexp_result;
     {
         Rcpp::traits::input_parameter< double >::type v(vSEXP );
-        sSymbol __result = sN(v);
+        sSymbol __result = sAlg_fromDouble(v);
         PROTECT(__sexp_result = Rcpp::wrap(__result));
     }
     UNPROTECT(1);
     return __sexp_result;
 END_RCPP_RETURN_ERROR
 }
-RcppExport SEXP symAlgebra_sN(SEXP vSEXP) {
+RcppExport SEXP symAlgebra_sAlg_fromDouble(SEXP vSEXP) {
     SEXP __result;
     {
         Rcpp::RNGScope __rngScope;
-        __result = PROTECT(symAlgebra_sN_try(vSEXP));
+        __result = PROTECT(symAlgebra_sAlg_fromDouble_try(vSEXP));
     }
     Rboolean __isInterrupt = Rf_inherits(__result, "interrupted-error");
     if (__isInterrupt) {
@@ -76,26 +76,60 @@ RcppExport SEXP symAlgebra_sN(SEXP vSEXP) {
     UNPROTECT(1);
     return __result;
 }
-// sSymboloperator_plus
-sSymbol sSymboloperator_plus(const sSymbol& x, const sSymbol& y);
-static SEXP symAlgebra_sSymboloperator_plus_try(SEXP xSEXP, SEXP ySEXP) {
+// sAlg_fromInt
+sSymbol sAlg_fromInt(int v);
+static SEXP symAlgebra_sAlg_fromInt_try(SEXP vSEXP) {
+BEGIN_RCPP
+    SEXP __sexp_result;
+    {
+        Rcpp::traits::input_parameter< int >::type v(vSEXP );
+        sSymbol __result = sAlg_fromInt(v);
+        PROTECT(__sexp_result = Rcpp::wrap(__result));
+    }
+    UNPROTECT(1);
+    return __sexp_result;
+END_RCPP_RETURN_ERROR
+}
+RcppExport SEXP symAlgebra_sAlg_fromInt(SEXP vSEXP) {
+    SEXP __result;
+    {
+        Rcpp::RNGScope __rngScope;
+        __result = PROTECT(symAlgebra_sAlg_fromInt_try(vSEXP));
+    }
+    Rboolean __isInterrupt = Rf_inherits(__result, "interrupted-error");
+    if (__isInterrupt) {
+        UNPROTECT(1);
+        Rf_onintr();
+    }
+    Rboolean __isError = Rf_inherits(__result, "try-error");
+    if (__isError) {
+        SEXP __msgSEXP = Rf_asChar(__result);
+        UNPROTECT(1);
+        Rf_error(CHAR(__msgSEXP));
+    }
+    UNPROTECT(1);
+    return __result;
+}
+// sAlg_plus
+sSymbol sAlg_plus(const sSymbol& x, const sSymbol& y);
+static SEXP symAlgebra_sAlg_plus_try(SEXP xSEXP, SEXP ySEXP) {
 BEGIN_RCPP
     SEXP __sexp_result;
     {
         Rcpp::traits::input_parameter< const sSymbol& >::type x(xSEXP );
         Rcpp::traits::input_parameter< const sSymbol& >::type y(ySEXP );
-        sSymbol __result = sSymboloperator_plus(x, y);
+        sSymbol __result = sAlg_plus(x, y);
         PROTECT(__sexp_result = Rcpp::wrap(__result));
     }
     UNPROTECT(1);
     return __sexp_result;
 END_RCPP_RETURN_ERROR
 }
-RcppExport SEXP symAlgebra_sSymboloperator_plus(SEXP xSEXP, SEXP ySEXP) {
+RcppExport SEXP symAlgebra_sAlg_plus(SEXP xSEXP, SEXP ySEXP) {
     SEXP __result;
     {
         Rcpp::RNGScope __rngScope;
-        __result = PROTECT(symAlgebra_sSymboloperator_plus_try(xSEXP, ySEXP));
+        __result = PROTECT(symAlgebra_sAlg_plus_try(xSEXP, ySEXP));
     }
     Rboolean __isInterrupt = Rf_inherits(__result, "interrupted-error");
     if (__isInterrupt) {
@@ -111,26 +145,26 @@ RcppExport SEXP symAlgebra_sSymboloperator_plus(SEXP xSEXP, SEXP ySEXP) {
     UNPROTECT(1);
     return __result;
 }
-// sSymboloperator_minus
-sSymbol sSymboloperator_minus(const sSymbol& x, const sSymbol& y);
-static SEXP symAlgebra_sSymboloperator_minus_try(SEXP xSEXP, SEXP ySEXP) {
+// sAlg_minus
+sSymbol sAlg_minus(const sSymbol& x, const sSymbol& y);
+static SEXP symAlgebra_sAlg_minus_try(SEXP xSEXP, SEXP ySEXP) {
 BEGIN_RCPP
     SEXP __sexp_result;
     {
         Rcpp::traits::input_parameter< const sSymbol& >::type x(xSEXP );
         Rcpp::traits::input_parameter< const sSymbol& >::type y(ySEXP );
-        sSymbol __result = sSymboloperator_minus(x, y);
+        sSymbol __result = sAlg_minus(x, y);
         PROTECT(__sexp_result = Rcpp::wrap(__result));
     }
     UNPROTECT(1);
     return __sexp_result;
 END_RCPP_RETURN_ERROR
 }
-RcppExport SEXP symAlgebra_sSymboloperator_minus(SEXP xSEXP, SEXP ySEXP) {
+RcppExport SEXP symAlgebra_sAlg_minus(SEXP xSEXP, SEXP ySEXP) {
     SEXP __result;
     {
         Rcpp::RNGScope __rngScope;
-        __result = PROTECT(symAlgebra_sSymboloperator_minus_try(xSEXP, ySEXP));
+        __result = PROTECT(symAlgebra_sAlg_minus_try(xSEXP, ySEXP));
     }
     Rboolean __isInterrupt = Rf_inherits(__result, "interrupted-error");
     if (__isInterrupt) {
@@ -146,26 +180,26 @@ RcppExport SEXP symAlgebra_sSymboloperator_minus(SEXP xSEXP, SEXP ySEXP) {
     UNPROTECT(1);
     return __result;
 }
-// sSymboloperator_times
-sSymbol sSymboloperator_times(const sSymbol& x, const sSymbol& y);
-static SEXP symAlgebra_sSymboloperator_times_try(SEXP xSEXP, SEXP ySEXP) {
+// sAlg_times
+sSymbol sAlg_times(const sSymbol& x, const sSymbol& y);
+static SEXP symAlgebra_sAlg_times_try(SEXP xSEXP, SEXP ySEXP) {
 BEGIN_RCPP
     SEXP __sexp_result;
     {
         Rcpp::traits::input_parameter< const sSymbol& >::type x(xSEXP );
         Rcpp::traits::input_parameter< const sSymbol& >::type y(ySEXP );
-        sSymbol __result = sSymboloperator_times(x, y);
+        sSymbol __result = sAlg_times(x, y);
         PROTECT(__sexp_result = Rcpp::wrap(__result));
     }
     UNPROTECT(1);
     return __sexp_result;
 END_RCPP_RETURN_ERROR
 }
-RcppExport SEXP symAlgebra_sSymboloperator_times(SEXP xSEXP, SEXP ySEXP) {
+RcppExport SEXP symAlgebra_sAlg_times(SEXP xSEXP, SEXP ySEXP) {
     SEXP __result;
     {
         Rcpp::RNGScope __rngScope;
-        __result = PROTECT(symAlgebra_sSymboloperator_times_try(xSEXP, ySEXP));
+        __result = PROTECT(symAlgebra_sAlg_times_try(xSEXP, ySEXP));
     }
     Rboolean __isInterrupt = Rf_inherits(__result, "interrupted-error");
     if (__isInterrupt) {
@@ -181,26 +215,26 @@ RcppExport SEXP symAlgebra_sSymboloperator_times(SEXP xSEXP, SEXP ySEXP) {
     UNPROTECT(1);
     return __result;
 }
-// sSymboloperator_divide
-sSymbol sSymboloperator_divide(const sSymbol& x, const sSymbol& y);
-static SEXP symAlgebra_sSymboloperator_divide_try(SEXP xSEXP, SEXP ySEXP) {
+// sAlg_divide
+sSymbol sAlg_divide(const sSymbol& x, const sSymbol& y);
+static SEXP symAlgebra_sAlg_divide_try(SEXP xSEXP, SEXP ySEXP) {
 BEGIN_RCPP
     SEXP __sexp_result;
     {
         Rcpp::traits::input_parameter< const sSymbol& >::type x(xSEXP );
         Rcpp::traits::input_parameter< const sSymbol& >::type y(ySEXP );
-        sSymbol __result = sSymboloperator_divide(x, y);
+        sSymbol __result = sAlg_divide(x, y);
         PROTECT(__sexp_result = Rcpp::wrap(__result));
     }
     UNPROTECT(1);
     return __sexp_result;
 END_RCPP_RETURN_ERROR
 }
-RcppExport SEXP symAlgebra_sSymboloperator_divide(SEXP xSEXP, SEXP ySEXP) {
+RcppExport SEXP symAlgebra_sAlg_divide(SEXP xSEXP, SEXP ySEXP) {
     SEXP __result;
     {
         Rcpp::RNGScope __rngScope;
-        __result = PROTECT(symAlgebra_sSymboloperator_divide_try(xSEXP, ySEXP));
+        __result = PROTECT(symAlgebra_sAlg_divide_try(xSEXP, ySEXP));
     }
     Rboolean __isInterrupt = Rf_inherits(__result, "interrupted-error");
     if (__isInterrupt) {
@@ -216,26 +250,26 @@ RcppExport SEXP symAlgebra_sSymboloperator_divide(SEXP xSEXP, SEXP ySEXP) {
     UNPROTECT(1);
     return __result;
 }
-// sSymboloperator_power
-sSymbol sSymboloperator_power(const sSymbol& x, const sSymbol& y);
-static SEXP symAlgebra_sSymboloperator_power_try(SEXP xSEXP, SEXP ySEXP) {
+// sAlg_power
+sSymbol sAlg_power(const sSymbol& x, const sSymbol& y);
+static SEXP symAlgebra_sAlg_power_try(SEXP xSEXP, SEXP ySEXP) {
 BEGIN_RCPP
     SEXP __sexp_result;
     {
         Rcpp::traits::input_parameter< const sSymbol& >::type x(xSEXP );
         Rcpp::traits::input_parameter< const sSymbol& >::type y(ySEXP );
-        sSymbol __result = sSymboloperator_power(x, y);
+        sSymbol __result = sAlg_power(x, y);
         PROTECT(__sexp_result = Rcpp::wrap(__result));
     }
     UNPROTECT(1);
     return __sexp_result;
 END_RCPP_RETURN_ERROR
 }
-RcppExport SEXP symAlgebra_sSymboloperator_power(SEXP xSEXP, SEXP ySEXP) {
+RcppExport SEXP symAlgebra_sAlg_power(SEXP xSEXP, SEXP ySEXP) {
     SEXP __result;
     {
         Rcpp::RNGScope __rngScope;
-        __result = PROTECT(symAlgebra_sSymboloperator_power_try(xSEXP, ySEXP));
+        __result = PROTECT(symAlgebra_sAlg_power_try(xSEXP, ySEXP));
     }
     Rboolean __isInterrupt = Rf_inherits(__result, "interrupted-error");
     if (__isInterrupt) {
@@ -251,26 +285,60 @@ RcppExport SEXP symAlgebra_sSymboloperator_power(SEXP xSEXP, SEXP ySEXP) {
     UNPROTECT(1);
     return __result;
 }
-// sSymboloperator_equal
-bool sSymboloperator_equal(sSymbol& x, sSymbol& y);
-static SEXP symAlgebra_sSymboloperator_equal_try(SEXP xSEXP, SEXP ySEXP) {
+// sAlg_equal
+bool sAlg_equal(sSymbol& x, sSymbol& y);
+static SEXP symAlgebra_sAlg_equal_try(SEXP xSEXP, SEXP ySEXP) {
 BEGIN_RCPP
     SEXP __sexp_result;
     {
         Rcpp::traits::input_parameter< sSymbol& >::type x(xSEXP );
         Rcpp::traits::input_parameter< sSymbol& >::type y(ySEXP );
-        bool __result = sSymboloperator_equal(x, y);
+        bool __result = sAlg_equal(x, y);
         PROTECT(__sexp_result = Rcpp::wrap(__result));
     }
     UNPROTECT(1);
     return __sexp_result;
 END_RCPP_RETURN_ERROR
 }
-RcppExport SEXP symAlgebra_sSymboloperator_equal(SEXP xSEXP, SEXP ySEXP) {
+RcppExport SEXP symAlgebra_sAlg_equal(SEXP xSEXP, SEXP ySEXP) {
     SEXP __result;
     {
         Rcpp::RNGScope __rngScope;
-        __result = PROTECT(symAlgebra_sSymboloperator_equal_try(xSEXP, ySEXP));
+        __result = PROTECT(symAlgebra_sAlg_equal_try(xSEXP, ySEXP));
+    }
+    Rboolean __isInterrupt = Rf_inherits(__result, "interrupted-error");
+    if (__isInterrupt) {
+        UNPROTECT(1);
+        Rf_onintr();
+    }
+    Rboolean __isError = Rf_inherits(__result, "try-error");
+    if (__isError) {
+        SEXP __msgSEXP = Rf_asChar(__result);
+        UNPROTECT(1);
+        Rf_error(CHAR(__msgSEXP));
+    }
+    UNPROTECT(1);
+    return __result;
+}
+// sAlg_ToC
+std::string sAlg_ToC(sSymbol& x);
+static SEXP symAlgebra_sAlg_ToC_try(SEXP xSEXP) {
+BEGIN_RCPP
+    SEXP __sexp_result;
+    {
+        Rcpp::traits::input_parameter< sSymbol& >::type x(xSEXP );
+        std::string __result = sAlg_ToC(x);
+        PROTECT(__sexp_result = Rcpp::wrap(__result));
+    }
+    UNPROTECT(1);
+    return __sexp_result;
+END_RCPP_RETURN_ERROR
+}
+RcppExport SEXP symAlgebra_sAlg_ToC(SEXP xSEXP) {
+    SEXP __result;
+    {
+        Rcpp::RNGScope __rngScope;
+        __result = PROTECT(symAlgebra_sAlg_ToC_try(xSEXP));
     }
     Rboolean __isInterrupt = Rf_inherits(__result, "interrupted-error");
     if (__isInterrupt) {
@@ -291,28 +359,32 @@ RcppExport SEXP symAlgebra_sSymboloperator_equal(SEXP xSEXP, SEXP ySEXP) {
 static int symAlgebra_RcppExport_validate(const char* sig) { 
     static std::set<std::string> signatures;
     if (signatures.empty()) {
-        signatures.insert("sSymbol(*sS)(Rcpp::String)");
-        signatures.insert("sSymbol(*sN)(double)");
-        signatures.insert("sSymbol(*sSymboloperator_plus)(const sSymbol&,const sSymbol&)");
-        signatures.insert("sSymbol(*sSymboloperator_minus)(const sSymbol&,const sSymbol&)");
-        signatures.insert("sSymbol(*sSymboloperator_times)(const sSymbol&,const sSymbol&)");
-        signatures.insert("sSymbol(*sSymboloperator_divide)(const sSymbol&,const sSymbol&)");
-        signatures.insert("sSymbol(*sSymboloperator_power)(const sSymbol&,const sSymbol&)");
-        signatures.insert("bool(*sSymboloperator_equal)(sSymbol&,sSymbol&)");
+        signatures.insert("sSymbol(*sAlg_fromString)(Rcpp::String)");
+        signatures.insert("sSymbol(*sAlg_fromDouble)(double)");
+        signatures.insert("sSymbol(*sAlg_fromInt)(int)");
+        signatures.insert("sSymbol(*sAlg_plus)(const sSymbol&,const sSymbol&)");
+        signatures.insert("sSymbol(*sAlg_minus)(const sSymbol&,const sSymbol&)");
+        signatures.insert("sSymbol(*sAlg_times)(const sSymbol&,const sSymbol&)");
+        signatures.insert("sSymbol(*sAlg_divide)(const sSymbol&,const sSymbol&)");
+        signatures.insert("sSymbol(*sAlg_power)(const sSymbol&,const sSymbol&)");
+        signatures.insert("bool(*sAlg_equal)(sSymbol&,sSymbol&)");
+        signatures.insert("std::string(*sAlg_ToC)(sSymbol&)");
     }
     return signatures.find(sig) != signatures.end();
 }
 
 // registerCCallable (register entry points for exported C++ functions)
 RcppExport SEXP symAlgebra_RcppExport_registerCCallable() { 
-    R_RegisterCCallable("symAlgebra", "symAlgebra_sS", (DL_FUNC)symAlgebra_sS_try);
-    R_RegisterCCallable("symAlgebra", "symAlgebra_sN", (DL_FUNC)symAlgebra_sN_try);
-    R_RegisterCCallable("symAlgebra", "symAlgebra_sSymboloperator_plus", (DL_FUNC)symAlgebra_sSymboloperator_plus_try);
-    R_RegisterCCallable("symAlgebra", "symAlgebra_sSymboloperator_minus", (DL_FUNC)symAlgebra_sSymboloperator_minus_try);
-    R_RegisterCCallable("symAlgebra", "symAlgebra_sSymboloperator_times", (DL_FUNC)symAlgebra_sSymboloperator_times_try);
-    R_RegisterCCallable("symAlgebra", "symAlgebra_sSymboloperator_divide", (DL_FUNC)symAlgebra_sSymboloperator_divide_try);
-    R_RegisterCCallable("symAlgebra", "symAlgebra_sSymboloperator_power", (DL_FUNC)symAlgebra_sSymboloperator_power_try);
-    R_RegisterCCallable("symAlgebra", "symAlgebra_sSymboloperator_equal", (DL_FUNC)symAlgebra_sSymboloperator_equal_try);
+    R_RegisterCCallable("symAlgebra", "symAlgebra_sAlg_fromString", (DL_FUNC)symAlgebra_sAlg_fromString_try);
+    R_RegisterCCallable("symAlgebra", "symAlgebra_sAlg_fromDouble", (DL_FUNC)symAlgebra_sAlg_fromDouble_try);
+    R_RegisterCCallable("symAlgebra", "symAlgebra_sAlg_fromInt", (DL_FUNC)symAlgebra_sAlg_fromInt_try);
+    R_RegisterCCallable("symAlgebra", "symAlgebra_sAlg_plus", (DL_FUNC)symAlgebra_sAlg_plus_try);
+    R_RegisterCCallable("symAlgebra", "symAlgebra_sAlg_minus", (DL_FUNC)symAlgebra_sAlg_minus_try);
+    R_RegisterCCallable("symAlgebra", "symAlgebra_sAlg_times", (DL_FUNC)symAlgebra_sAlg_times_try);
+    R_RegisterCCallable("symAlgebra", "symAlgebra_sAlg_divide", (DL_FUNC)symAlgebra_sAlg_divide_try);
+    R_RegisterCCallable("symAlgebra", "symAlgebra_sAlg_power", (DL_FUNC)symAlgebra_sAlg_power_try);
+    R_RegisterCCallable("symAlgebra", "symAlgebra_sAlg_equal", (DL_FUNC)symAlgebra_sAlg_equal_try);
+    R_RegisterCCallable("symAlgebra", "symAlgebra_sAlg_ToC", (DL_FUNC)symAlgebra_sAlg_ToC_try);
     R_RegisterCCallable("symAlgebra", "symAlgebra_RcppExport_validate", (DL_FUNC)symAlgebra_RcppExport_validate);
     return R_NilValue;
 }

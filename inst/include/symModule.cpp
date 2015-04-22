@@ -1,4 +1,4 @@
-
+/*
 using namespace Rcpp;
 RCPP_EXPOSED_CLASS(sSymbol)
 
@@ -16,3 +16,5 @@ RCPP_MODULE(class_sSymbol) {
     .method("attrs", &sSymbol::toC)
     ;
 }
+*/
+

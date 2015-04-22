@@ -24,17 +24,17 @@ namespace symAlgebra {
         }
     }
 
-    inline sSymbol sS(Rcpp::String v) {
-        typedef SEXP(*Ptr_sS)(SEXP);
-        static Ptr_sS p_sS = NULL;
-        if (p_sS == NULL) {
-            validateSignature("sSymbol(*sS)(Rcpp::String)");
-            p_sS = (Ptr_sS)R_GetCCallable("symAlgebra", "symAlgebra_sS");
+    inline sSymbol sAlg_fromString(Rcpp::String v) {
+        typedef SEXP(*Ptr_sAlg_fromString)(SEXP);
+        static Ptr_sAlg_fromString p_sAlg_fromString = NULL;
+        if (p_sAlg_fromString == NULL) {
+            validateSignature("sSymbol(*sAlg_fromString)(Rcpp::String)");
+            p_sAlg_fromString = (Ptr_sAlg_fromString)R_GetCCallable("symAlgebra", "symAlgebra_sAlg_fromString");
         }
         RObject __result;
         {
             RNGScope __rngScope;
-            __result = p_sS(Rcpp::wrap(v));
+            __result = p_sAlg_fromString(Rcpp::wrap(v));
         }
         if (__result.inherits("interrupted-error"))
             throw Rcpp::internal::InterruptedException();
@@ -43,17 +43,17 @@ namespace symAlgebra {
         return Rcpp::as<sSymbol >(__result);
     }
 
-    inline sSymbol sN(double v) {
-        typedef SEXP(*Ptr_sN)(SEXP);
-        static Ptr_sN p_sN = NULL;
-        if (p_sN == NULL) {
-            validateSignature("sSymbol(*sN)(double)");
-            p_sN = (Ptr_sN)R_GetCCallable("symAlgebra", "symAlgebra_sN");
+    inline sSymbol sAlg_fromDouble(double v) {
+        typedef SEXP(*Ptr_sAlg_fromDouble)(SEXP);
+        static Ptr_sAlg_fromDouble p_sAlg_fromDouble = NULL;
+        if (p_sAlg_fromDouble == NULL) {
+            validateSignature("sSymbol(*sAlg_fromDouble)(double)");
+            p_sAlg_fromDouble = (Ptr_sAlg_fromDouble)R_GetCCallable("symAlgebra", "symAlgebra_sAlg_fromDouble");
         }
         RObject __result;
         {
             RNGScope __rngScope;
-            __result = p_sN(Rcpp::wrap(v));
+            __result = p_sAlg_fromDouble(Rcpp::wrap(v));
         }
         if (__result.inherits("interrupted-error"))
             throw Rcpp::internal::InterruptedException();
@@ -62,17 +62,17 @@ namespace symAlgebra {
         return Rcpp::as<sSymbol >(__result);
     }
 
-    inline sSymbol sSymboloperator_plus(const sSymbol& x, const sSymbol& y) {
-        typedef SEXP(*Ptr_sSymboloperator_plus)(SEXP,SEXP);
-        static Ptr_sSymboloperator_plus p_sSymboloperator_plus = NULL;
-        if (p_sSymboloperator_plus == NULL) {
-            validateSignature("sSymbol(*sSymboloperator_plus)(const sSymbol&,const sSymbol&)");
-            p_sSymboloperator_plus = (Ptr_sSymboloperator_plus)R_GetCCallable("symAlgebra", "symAlgebra_sSymboloperator_plus");
+    inline sSymbol sAlg_fromInt(int v) {
+        typedef SEXP(*Ptr_sAlg_fromInt)(SEXP);
+        static Ptr_sAlg_fromInt p_sAlg_fromInt = NULL;
+        if (p_sAlg_fromInt == NULL) {
+            validateSignature("sSymbol(*sAlg_fromInt)(int)");
+            p_sAlg_fromInt = (Ptr_sAlg_fromInt)R_GetCCallable("symAlgebra", "symAlgebra_sAlg_fromInt");
         }
         RObject __result;
         {
             RNGScope __rngScope;
-            __result = p_sSymboloperator_plus(Rcpp::wrap(x), Rcpp::wrap(y));
+            __result = p_sAlg_fromInt(Rcpp::wrap(v));
         }
         if (__result.inherits("interrupted-error"))
             throw Rcpp::internal::InterruptedException();
@@ -81,17 +81,17 @@ namespace symAlgebra {
         return Rcpp::as<sSymbol >(__result);
     }
 
-    inline sSymbol sSymboloperator_minus(const sSymbol& x, const sSymbol& y) {
-        typedef SEXP(*Ptr_sSymboloperator_minus)(SEXP,SEXP);
-        static Ptr_sSymboloperator_minus p_sSymboloperator_minus = NULL;
-        if (p_sSymboloperator_minus == NULL) {
-            validateSignature("sSymbol(*sSymboloperator_minus)(const sSymbol&,const sSymbol&)");
-            p_sSymboloperator_minus = (Ptr_sSymboloperator_minus)R_GetCCallable("symAlgebra", "symAlgebra_sSymboloperator_minus");
+    inline sSymbol sAlg_plus(const sSymbol& x, const sSymbol& y) {
+        typedef SEXP(*Ptr_sAlg_plus)(SEXP,SEXP);
+        static Ptr_sAlg_plus p_sAlg_plus = NULL;
+        if (p_sAlg_plus == NULL) {
+            validateSignature("sSymbol(*sAlg_plus)(const sSymbol&,const sSymbol&)");
+            p_sAlg_plus = (Ptr_sAlg_plus)R_GetCCallable("symAlgebra", "symAlgebra_sAlg_plus");
         }
         RObject __result;
         {
             RNGScope __rngScope;
-            __result = p_sSymboloperator_minus(Rcpp::wrap(x), Rcpp::wrap(y));
+            __result = p_sAlg_plus(Rcpp::wrap(x), Rcpp::wrap(y));
         }
         if (__result.inherits("interrupted-error"))
             throw Rcpp::internal::InterruptedException();
@@ -100,17 +100,17 @@ namespace symAlgebra {
         return Rcpp::as<sSymbol >(__result);
     }
 
-    inline sSymbol sSymboloperator_times(const sSymbol& x, const sSymbol& y) {
-        typedef SEXP(*Ptr_sSymboloperator_times)(SEXP,SEXP);
-        static Ptr_sSymboloperator_times p_sSymboloperator_times = NULL;
-        if (p_sSymboloperator_times == NULL) {
-            validateSignature("sSymbol(*sSymboloperator_times)(const sSymbol&,const sSymbol&)");
-            p_sSymboloperator_times = (Ptr_sSymboloperator_times)R_GetCCallable("symAlgebra", "symAlgebra_sSymboloperator_times");
+    inline sSymbol sAlg_minus(const sSymbol& x, const sSymbol& y) {
+        typedef SEXP(*Ptr_sAlg_minus)(SEXP,SEXP);
+        static Ptr_sAlg_minus p_sAlg_minus = NULL;
+        if (p_sAlg_minus == NULL) {
+            validateSignature("sSymbol(*sAlg_minus)(const sSymbol&,const sSymbol&)");
+            p_sAlg_minus = (Ptr_sAlg_minus)R_GetCCallable("symAlgebra", "symAlgebra_sAlg_minus");
         }
         RObject __result;
         {
             RNGScope __rngScope;
-            __result = p_sSymboloperator_times(Rcpp::wrap(x), Rcpp::wrap(y));
+            __result = p_sAlg_minus(Rcpp::wrap(x), Rcpp::wrap(y));
         }
         if (__result.inherits("interrupted-error"))
             throw Rcpp::internal::InterruptedException();
@@ -119,17 +119,17 @@ namespace symAlgebra {
         return Rcpp::as<sSymbol >(__result);
     }
 
-    inline sSymbol sSymboloperator_divide(const sSymbol& x, const sSymbol& y) {
-        typedef SEXP(*Ptr_sSymboloperator_divide)(SEXP,SEXP);
-        static Ptr_sSymboloperator_divide p_sSymboloperator_divide = NULL;
-        if (p_sSymboloperator_divide == NULL) {
-            validateSignature("sSymbol(*sSymboloperator_divide)(const sSymbol&,const sSymbol&)");
-            p_sSymboloperator_divide = (Ptr_sSymboloperator_divide)R_GetCCallable("symAlgebra", "symAlgebra_sSymboloperator_divide");
+    inline sSymbol sAlg_times(const sSymbol& x, const sSymbol& y) {
+        typedef SEXP(*Ptr_sAlg_times)(SEXP,SEXP);
+        static Ptr_sAlg_times p_sAlg_times = NULL;
+        if (p_sAlg_times == NULL) {
+            validateSignature("sSymbol(*sAlg_times)(const sSymbol&,const sSymbol&)");
+            p_sAlg_times = (Ptr_sAlg_times)R_GetCCallable("symAlgebra", "symAlgebra_sAlg_times");
         }
         RObject __result;
         {
             RNGScope __rngScope;
-            __result = p_sSymboloperator_divide(Rcpp::wrap(x), Rcpp::wrap(y));
+            __result = p_sAlg_times(Rcpp::wrap(x), Rcpp::wrap(y));
         }
         if (__result.inherits("interrupted-error"))
             throw Rcpp::internal::InterruptedException();
@@ -138,17 +138,17 @@ namespace symAlgebra {
         return Rcpp::as<sSymbol >(__result);
     }
 
-    inline sSymbol sSymboloperator_power(const sSymbol& x, const sSymbol& y) {
-        typedef SEXP(*Ptr_sSymboloperator_power)(SEXP,SEXP);
-        static Ptr_sSymboloperator_power p_sSymboloperator_power = NULL;
-        if (p_sSymboloperator_power == NULL) {
-            validateSignature("sSymbol(*sSymboloperator_power)(const sSymbol&,const sSymbol&)");
-            p_sSymboloperator_power = (Ptr_sSymboloperator_power)R_GetCCallable("symAlgebra", "symAlgebra_sSymboloperator_power");
+    inline sSymbol sAlg_divide(const sSymbol& x, const sSymbol& y) {
+        typedef SEXP(*Ptr_sAlg_divide)(SEXP,SEXP);
+        static Ptr_sAlg_divide p_sAlg_divide = NULL;
+        if (p_sAlg_divide == NULL) {
+            validateSignature("sSymbol(*sAlg_divide)(const sSymbol&,const sSymbol&)");
+            p_sAlg_divide = (Ptr_sAlg_divide)R_GetCCallable("symAlgebra", "symAlgebra_sAlg_divide");
         }
         RObject __result;
         {
             RNGScope __rngScope;
-            __result = p_sSymboloperator_power(Rcpp::wrap(x), Rcpp::wrap(y));
+            __result = p_sAlg_divide(Rcpp::wrap(x), Rcpp::wrap(y));
         }
         if (__result.inherits("interrupted-error"))
             throw Rcpp::internal::InterruptedException();
@@ -157,23 +157,61 @@ namespace symAlgebra {
         return Rcpp::as<sSymbol >(__result);
     }
 
-    inline bool sSymboloperator_equal(sSymbol& x, sSymbol& y) {
-        typedef SEXP(*Ptr_sSymboloperator_equal)(SEXP,SEXP);
-        static Ptr_sSymboloperator_equal p_sSymboloperator_equal = NULL;
-        if (p_sSymboloperator_equal == NULL) {
-            validateSignature("bool(*sSymboloperator_equal)(sSymbol&,sSymbol&)");
-            p_sSymboloperator_equal = (Ptr_sSymboloperator_equal)R_GetCCallable("symAlgebra", "symAlgebra_sSymboloperator_equal");
+    inline sSymbol sAlg_power(const sSymbol& x, const sSymbol& y) {
+        typedef SEXP(*Ptr_sAlg_power)(SEXP,SEXP);
+        static Ptr_sAlg_power p_sAlg_power = NULL;
+        if (p_sAlg_power == NULL) {
+            validateSignature("sSymbol(*sAlg_power)(const sSymbol&,const sSymbol&)");
+            p_sAlg_power = (Ptr_sAlg_power)R_GetCCallable("symAlgebra", "symAlgebra_sAlg_power");
         }
         RObject __result;
         {
             RNGScope __rngScope;
-            __result = p_sSymboloperator_equal(Rcpp::wrap(x), Rcpp::wrap(y));
+            __result = p_sAlg_power(Rcpp::wrap(x), Rcpp::wrap(y));
+        }
+        if (__result.inherits("interrupted-error"))
+            throw Rcpp::internal::InterruptedException();
+        if (__result.inherits("try-error"))
+            throw Rcpp::exception(as<std::string>(__result).c_str());
+        return Rcpp::as<sSymbol >(__result);
+    }
+
+    inline bool sAlg_equal(sSymbol& x, sSymbol& y) {
+        typedef SEXP(*Ptr_sAlg_equal)(SEXP,SEXP);
+        static Ptr_sAlg_equal p_sAlg_equal = NULL;
+        if (p_sAlg_equal == NULL) {
+            validateSignature("bool(*sAlg_equal)(sSymbol&,sSymbol&)");
+            p_sAlg_equal = (Ptr_sAlg_equal)R_GetCCallable("symAlgebra", "symAlgebra_sAlg_equal");
+        }
+        RObject __result;
+        {
+            RNGScope __rngScope;
+            __result = p_sAlg_equal(Rcpp::wrap(x), Rcpp::wrap(y));
         }
         if (__result.inherits("interrupted-error"))
             throw Rcpp::internal::InterruptedException();
         if (__result.inherits("try-error"))
             throw Rcpp::exception(as<std::string>(__result).c_str());
         return Rcpp::as<bool >(__result);
+    }
+
+    inline std::string sAlg_ToC(sSymbol& x) {
+        typedef SEXP(*Ptr_sAlg_ToC)(SEXP);
+        static Ptr_sAlg_ToC p_sAlg_ToC = NULL;
+        if (p_sAlg_ToC == NULL) {
+            validateSignature("std::string(*sAlg_ToC)(sSymbol&)");
+            p_sAlg_ToC = (Ptr_sAlg_ToC)R_GetCCallable("symAlgebra", "symAlgebra_sAlg_ToC");
+        }
+        RObject __result;
+        {
+            RNGScope __rngScope;
+            __result = p_sAlg_ToC(Rcpp::wrap(x));
+        }
+        if (__result.inherits("interrupted-error"))
+            throw Rcpp::internal::InterruptedException();
+        if (__result.inherits("try-error"))
+            throw Rcpp::exception(as<std::string>(__result).c_str());
+        return Rcpp::as<std::string >(__result);
     }
 
 }
