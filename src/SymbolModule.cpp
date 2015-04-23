@@ -3,63 +3,89 @@
 using namespace Rcpp ;
 #include "Symbol.h"
 
+// [[Rcpp::interfaces(r,cpp)]]
 
-RCPP_EXPOSED_CLASS(sSymbol)
+    Symbolic & sSymbol::val() {
+      return *pval;
+    }
+    const Symbolic & sSymbol::val() const {
+      return *pval;
+    }
+    sSymbol::sSymbol(const Symbolic& val_):pval(new Symbolic(val_)) {};
+    sSymbol::sSymbol(Rcpp::String val_): pval(new Symbolic(std::string(val_))) {};  
+    template <typename T>
+    sSymbol::sSymbol(T val_): pval(new Symbolic(val_)) {};    
+    template sSymbol::sSymbol<int>(int);
+    template sSymbol::sSymbol<double>(double);
+    template <> sSymbol::sSymbol<SEXP>(SEXP val_):pval(as< XPtr<Symbolic> >(S4(val_).slot("pointer"))) {
+      
+    };
+    
+    sSymbol::~sSymbol() {
+    }
+    
+    sSymbol::operator SEXP() const {
+      S4 ret("sAlg");
+      ret.slot("pointer") = pval;
+      return ret;
+    };
+    
+    std::string sSymbol::toC(){
+      std::stringstream v;
+      v << std::scientific;
+      v.precision(16);
+      v << val();
+      return v.str();
+    };
+    
 
-
-RCPP_MODULE(class_sSymbol) {
-
-
-    class_<sSymbol>("sSymbol")
-
-    .constructor<String>()
-    .constructor<double>()
-    .constructor<int>()    
-  //  .constructor<Symbolic>()
-    .field_readonly("test", &sSymbol::test)
-
-    .method("toC", &sSymbol::toC)
-    .method("attrs", &sSymbol::toC)
-    ;
-}
 
 
 // [[Rcpp::export]]
-sSymbol sS(Rcpp::String v) {
+sSymbol sAlg_fromString(Rcpp::String v) {
   return sSymbol(v);
 }
 
 // [[Rcpp::export]]
-sSymbol sN(double v) {
+sSymbol sAlg_fromDouble(double v) {
   return sSymbol(v);
 }
 
 // [[Rcpp::export]]
-sSymbol sSymboloperator_plus(const sSymbol& x, const sSymbol& y) {
+sSymbol sAlg_fromInt(int v) {
+  return sSymbol(v);
+}
+
+// [[Rcpp::export]]
+sSymbol sAlg_plus(const sSymbol& x, const sSymbol& y) {
 //  Rcpp::XPtr<sSymbol> ptr1(x);
 //  Rcpp::XPtr<sSymbol> ptr2(y);
-//  std::cout << ptr1->val + ptr2->val;
-//  Rcpp::XPtr<sSymbol> ptr( new sSymbol(ptr1->val + ptr2->val), true );
-  return x.val + y.val;
+//  std::cout << ptr1->val() + ptr2->val();
+//  Rcpp::XPtr<sSymbol> ptr( new sSymbol(ptr1->val() + ptr2->val()), true );
+  return x.val() + y.val();
 }
 // [[Rcpp::export]]
-sSymbol sSymboloperator_minus(const sSymbol& x, const sSymbol& y) {
-  return x.val - y.val;
+sSymbol sAlg_minus(const sSymbol& x, const sSymbol& y) {
+  return x.val() - y.val();
 }
 // [[Rcpp::export]]
-sSymbol sSymboloperator_times(const sSymbol& x, const sSymbol& y) {
-  return x.val * y.val;
+sSymbol sAlg_times(const sSymbol& x, const sSymbol& y) {
+  return x.val() * y.val();
 }
 // [[Rcpp::export]]
-sSymbol sSymboloperator_divide(const sSymbol& x, const sSymbol& y) {
-  return x.val / y.val;
+sSymbol sAlg_divide(const sSymbol& x, const sSymbol& y) {
+  return x.val() / y.val();
 }
 // [[Rcpp::export]]
-sSymbol sSymboloperator_power(const sSymbol& x, const sSymbol& y) {
-  return x.val ^ y.val;
+sSymbol sAlg_power(const sSymbol& x, const sSymbol& y) {
+  return x.val() ^ y.val();
 }
 // [[Rcpp::export]]
-bool sSymboloperator_equal(sSymbol& x, sSymbol& y) {
-  return x.val == y.val;
+bool sAlg_equal(sSymbol& x, sSymbol& y) {
+  return x.val() == y.val();
 }
 
+// [[Rcpp::export]]
+std::string sAlg_ToC(sSymbol& x) {
+  return x.toC();
+}
